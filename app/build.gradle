@@ -4,7 +4,7 @@ plugins {
     id 'kotlin-kapt'
 }
 
-apply from: '../config/detekt/detekt.gradle'
+//apply from: '../config/detekt/detekt.gradle'
 
 android {
     compileSdk 31
@@ -38,7 +38,7 @@ android {
     }
 }
 
-def koin_version = '2.2.3'
+def koin_version = '3.1.5'
 def room_version = '2.4.1'
 def coroutines_version = '1.6.0'
 
@@ -60,6 +60,17 @@ dependencies {
 
     // Koin
     implementation "io.insert-koin:koin-core:$koin_version"
+    // Koin main features for Android
+    implementation "io.insert-koin:koin-android:$koin_version"
+    // No more koin-android-viewmodel, koin-android-scope, koin-android-fragment
+    // Java Compatibility
+    implementation "io.insert-koin:koin-android-compat:$koin_version"
+    // Jetpack WorkManager
+    implementation "io.insert-koin:koin-androidx-workmanager:$koin_version"
+    // Navigation Graph
+    implementation "io.insert-koin:koin-androidx-navigation:$koin_version"
+    // Jetpack Compose
+    implementation "io.insert-koin:koin-androidx-compose:$koin_version"
 
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
