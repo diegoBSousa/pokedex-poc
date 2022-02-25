@@ -1,4 +1,4 @@
-package com.example.pokedexpoc.di
+package com.example.pokedexpoc.framework.di
 
 import com.example.pokedexpoc.presentation.MainRepository
 import com.example.pokedexpoc.presentation.MainViewModel
