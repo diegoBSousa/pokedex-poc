@@ -27,7 +27,7 @@ object DataModule {
 
     private fun networkModule() : Module {
         return module {
-            single {
+            single<PokemonService> {
                 createService(get(), get())
             }
 
@@ -49,15 +49,15 @@ object DataModule {
         }
     }
 
-    private inline fun createService(
+    private inline fun <reified T>createService(
         factory: Moshi,
         client: OkHttpClient
-    ) : PokemonService {
+    ) : T {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create(factory))
             .client(client)
             .build()
-            .create(PokemonService::class.java)
+            .create(T::class.java)
     }
 }
