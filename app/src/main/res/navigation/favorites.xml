@@ -9,6 +9,6 @@
     <fragment
         android:id="@+id/favoritesFragment"
         android:name="com.example.pokedexpoc.presentation.ui.favorites.FavoritesFragment"
-        android:label="fragment_favorites"
+        android:label="@string/favorites_fragment_title"
         tools:layout="@layout/fragment_favorites" />
 </navigation>

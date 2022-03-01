@@ -9,6 +9,6 @@
     <fragment
         android:id="@+id/aboutFragment"
         android:name="com.example.pokedexpoc.presentation.ui.about.AboutFragment"
-        android:label="fragment_about"
+        android:label="@string/about_fragment_title"
         tools:layout="@layout/fragment_about" />
 </navigation>
