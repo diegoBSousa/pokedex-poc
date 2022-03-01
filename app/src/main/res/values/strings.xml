@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Pokedex Poc</string>
+
+    <!-- Bottom Menu -->
+    <string name="bottom_menu_home">Home</string>
+    <string name="bottom_menu_favorites">Favorites</string>
+    <string name="bottom_menu_about">About</string>
+
+    <string name="pokemon_fragment_label">Pokemons</string>
+    <string name="pokemon_fragment_title">Pokemons</string>
+    <string name="favorites_fragment_label">Favorites</string>
+    <string name="favorites_fragment_title">Favorites</string>
+    <string name="about_fragment_label">About</string>
+    <string name="about_fragment_title">About</string>
 </resources>
