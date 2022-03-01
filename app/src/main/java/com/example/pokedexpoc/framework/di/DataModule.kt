@@ -8,6 +8,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
 import retrofit2.Retrofit
@@ -16,6 +17,10 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 object DataModule {
     private const val BASE_URL = "https://pokeapi.co/api/v2/"
     private const val OK_HTTP = "Ok Http"
+
+    fun load() {
+        loadKoinModules(pokemonsModule() + networkModule())
+    }
 
     private fun pokemonsModule() : Module {
         return module {

@@ -1,8 +1,8 @@
 package com.example.pokedexpoc
 
 import android.app.Application
-import com.example.pokedexpoc.framework.di.mainModule
-import com.example.pokedexpoc.presentation.di.PresentationModule
+import com.example.pokedexpoc.framework.di.DataModule
+import com.example.pokedexpoc.framework.di.PresentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.GlobalContext.startKoin
 
@@ -19,5 +19,6 @@ class MyApp : Application() {
         }
 
         PresentationModule.load()
+        DataModule.load()
     }
 }

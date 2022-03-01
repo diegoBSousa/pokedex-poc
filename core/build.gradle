@@ -4,8 +4,8 @@ plugins {
 }
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_1_7
-    targetCompatibility = JavaVersion.VERSION_1_7
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
 }
 
 dependencies {
@@ -20,6 +20,20 @@ dependencies {
     //implementation(platform("com.squareup.okhttp3:okhttp-bom:$okhttp_version"))
     //implementation("com.squareup.okhttp3:okhttp:$okhttp_version")
     //implementation("com.squareup.okhttp3:logging-interceptor:$okhttp_version")
+
+    def koin_version = '3.1.5'
+    api "io.insert-koin:koin-core:$koin_version"
+    // Koin main features for Android
+    //api "io.insert-koin:koin-android:$koin_version"
+    // No more koin-android-viewmodel, koin-android-scope, koin-android-fragment
+    // Java Compatibility
+    //api "io.insert-koin:koin-android-compat:$koin_version"
+    // Jetpack WorkManager
+    //api "io.insert-koin:koin-androidx-workmanager:$koin_version"
+    // Navigation Graph
+    //api "io.insert-koin:koin-androidx-navigation:$koin_version"
+    // Jetpack Compose
+    //api "io.insert-koin:koin-androidx-compose:$koin_version"
 
     //Moshi (JSON mapping)
     implementation("com.squareup.moshi:moshi-kotlin:1.12.0")

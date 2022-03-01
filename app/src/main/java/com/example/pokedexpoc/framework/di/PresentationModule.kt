@@ -1,4 +1,4 @@
-package com.example.pokedexpoc.presentation.di
+package com.example.pokedexpoc.framework.di
 
 import com.example.pokedexpoc.presentation.ui.home.HomeViewModel
 import org.koin.core.context.loadKoinModules
@@ -14,7 +14,7 @@ object PresentationModule {
     private fun viewModelModule() : Module {
         return module {
             factory {
-                HomeViewModel()
+                HomeViewModel(get())
             }
         }
     }
