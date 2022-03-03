@@ -7,6 +7,9 @@ import com.bumptech.glide.Glide
 import com.example.core.domain.model.Pokemon
 import com.example.pokedexpoc.R
 import com.example.pokedexpoc.databinding.ItemPokemonBinding
+import com.github.florent37.glidepalette.BitmapPalette.Profile.MUTED_DARK
+import com.github.florent37.glidepalette.BitmapPalette.Profile.VIBRANT
+import com.github.florent37.glidepalette.GlidePalette
 
 class PokemonsViewHolder(
     itemPokemonBinding: ItemPokemonBinding
@@ -14,11 +17,20 @@ class PokemonsViewHolder(
 
     private val pokemonName = itemPokemonBinding.pokemonName
     private val pokemonImage = itemPokemonBinding.pokemonImage
+    private val pokemonCard = itemPokemonBinding.pokemonCard
 
     fun bind(pokemon: Pokemon) {
         pokemonName.text = pokemon.name
         Glide.with(itemView)
             .load(pokemon.imageUrl)
+            .listener(
+                GlidePalette.with(pokemon.imageUrl)
+                    .use(MUTED_DARK)
+                    .intoBackground(pokemonCard)
+
+                    .use(VIBRANT)
+                    .intoTextColor(pokemonName)
+            )
             .fallback(R.drawable.ic_baseline_broken_image_24)
             .into(pokemonImage)
     }
