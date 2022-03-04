@@ -5,9 +5,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import com.example.core.domain.model.Pokemon
 import com.example.pokedexpoc.R
 import com.example.pokedexpoc.databinding.FragmentPokemonsBinding
+import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class PokemonsFragment : Fragment() {
@@ -16,6 +19,8 @@ class PokemonsFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
+
+    private val viewModel: PokemonsViewModel by viewModel()
 
     private val pokemonsAdapter = PokemonsAdapter()
 
@@ -38,9 +43,14 @@ class PokemonsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initPokemonsAdapter()
 
+        lifecycleScope.launch {
+            viewModel.pokemonsPagingData(query = "").collect { pagingDate->
+                pokemonsAdapter.submitData(pagingDate)
+            }
+        }
         /* *
         * Todo("Remove data test")
-         */
+
         pokemonsAdapter.submitList(
             listOf(
                 Pokemon(1, "bulbasaur", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"),
@@ -51,7 +61,7 @@ class PokemonsFragment : Fragment() {
                 Pokemon(6, "charizard", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/6.png"),
                 Pokemon(7, "squirtle", "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/7.png"),
             )
-        )
+        )*/
     }
 
     private fun initPokemonsAdapter() {

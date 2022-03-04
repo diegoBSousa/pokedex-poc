@@ -1,17 +1,19 @@
 package com.example.pokedexpoc.presentation.ui.pokemons
 
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import com.example.core.domain.model.Pokemon
 
-class PokemonsAdapter : ListAdapter<Pokemon, PokemonsViewHolder>(differCallback) {
+class PokemonsAdapter : PagingDataAdapter<Pokemon, PokemonsViewHolder>(differCallback) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PokemonsViewHolder {
         return PokemonsViewHolder.create(parent)
     }
 
     override fun onBindViewHolder(holder: PokemonsViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        getItem(position)?.let { pokemon ->
+            holder.bind(pokemon)
+        }
     }
 
     companion object {
