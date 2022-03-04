@@ -1,7 +1,7 @@
 package com.example.pokedexpoc.framework.repository.implementations
 
 import androidx.paging.PagingSource
-import com.example.pokedexpoc.framework.repository.interfaces.PokemonRepositoryInterface
+import com.example.core.data.repositories.interfaces.PokemonRepositoryInterface
 import com.example.core.domain.model.Pokemon
 import com.example.pokedexpoc.framework.paging.PokemonsPagingSource
 

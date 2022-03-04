@@ -3,11 +3,9 @@ package com.example.pokedexpoc.presentation.ui.home
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.example.core.data.network.response.PokemonContainerResponse
-import com.example.pokedexpoc.framework.repository.interfaces.PokemonRepositoryInterface
+import com.example.core.data.repositories.interfaces.PokemonRepositoryInterface
 //import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: PokemonRepositoryInterface) : ViewModel() {
 

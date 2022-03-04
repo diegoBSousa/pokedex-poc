@@ -1,4 +1,4 @@
-package com.example.pokedexpoc.framework.repository.interfaces
+package com.example.core.data.repositories.interfaces
 
 interface PokemonsRemoteDataSourceInterface<T> {
 

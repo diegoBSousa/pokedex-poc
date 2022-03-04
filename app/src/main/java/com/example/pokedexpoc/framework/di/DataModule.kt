@@ -4,8 +4,8 @@ import android.util.Log
 import com.example.core.data.network.response.PokemonContainerResponse
 import com.example.pokedexpoc.framework.repository.implementations.PokemonRepositoryImplementation
 import com.example.pokedexpoc.framework.repository.implementations.PokemonsRemoteDataSourceImplementation
-import com.example.pokedexpoc.framework.repository.interfaces.PokemonRepositoryInterface
-import com.example.pokedexpoc.framework.repository.interfaces.PokemonsRemoteDataSourceInterface
+import com.example.core.data.repositories.interfaces.PokemonRepositoryInterface
+import com.example.core.data.repositories.interfaces.PokemonsRemoteDataSourceInterface
 import com.example.core.data.services.PokemonService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

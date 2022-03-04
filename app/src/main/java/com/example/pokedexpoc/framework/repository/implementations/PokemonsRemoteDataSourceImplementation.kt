@@ -1,7 +1,7 @@
 package com.example.pokedexpoc.framework.repository.implementations
 
 import com.example.core.data.network.response.PokemonContainerResponse
-import com.example.pokedexpoc.framework.repository.interfaces.PokemonsRemoteDataSourceInterface
+import com.example.core.data.repositories.interfaces.PokemonsRemoteDataSourceInterface
 import com.example.core.data.services.PokemonService
 
 class  PokemonsRemoteDataSourceImplementation(
