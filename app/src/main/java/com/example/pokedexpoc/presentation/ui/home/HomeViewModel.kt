@@ -5,9 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.core.data.network.response.PokemonContainerResponse
-import com.example.core.data.repository.interfaces.PokemonRepositoryInterface
+import com.example.pokedexpoc.framework.repository.interfaces.PokemonRepositoryInterface
 //import kotlinx.coroutines.InternalCoroutinesApi
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: PokemonRepositoryInterface) : ViewModel() {
@@ -15,12 +14,12 @@ class HomeViewModel(private val repository: PokemonRepositoryInterface) : ViewMo
     private val _listPokemon = MutableLiveData<List<PokemonContainerResponse>>()
     val listPokemon: LiveData<List<PokemonContainerResponse>>
         get() = _listPokemon
-
+/*
     private fun fetchPokemons() {
         viewModelScope.launch {
             repository.listPokemons().collect {
                 _listPokemon.postValue(it)
             }
         }
-    }
+    }*/
 }

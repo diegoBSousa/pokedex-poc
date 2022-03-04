@@ -1,8 +1,11 @@
 package com.example.pokedexpoc.framework.di
 
 import android.util.Log
-import com.example.core.data.repository.implementations.PokemonRepositoryImplementation
-import com.example.core.data.repository.interfaces.PokemonRepositoryInterface
+import com.example.core.data.network.response.PokemonContainerResponse
+import com.example.pokedexpoc.framework.repository.implementations.PokemonRepositoryImplementation
+import com.example.pokedexpoc.framework.repository.implementations.PokemonsRemoteDataSourceImplementation
+import com.example.pokedexpoc.framework.repository.interfaces.PokemonRepositoryInterface
+import com.example.pokedexpoc.framework.repository.interfaces.PokemonsRemoteDataSourceInterface
 import com.example.core.data.services.PokemonService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -27,6 +30,11 @@ object DataModule {
             single<PokemonRepositoryInterface> {
                 PokemonRepositoryImplementation(get())
             }
+
+            single<PokemonsRemoteDataSourceInterface<PokemonContainerResponse>> {
+                PokemonsRemoteDataSourceImplementation(get())
+            }
+
         }
     }
 
