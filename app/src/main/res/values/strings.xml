@@ -12,4 +12,6 @@
     <string name="favorites_fragment_title">Favorites</string>
     <string name="about_fragment_label">About</string>
     <string name="about_fragment_title">About</string>
+    <string name="error_loading_pokemons">Error when trying to load Pokemons</string>
+    <string name="common_try_again">Try Again</string>
 </resources>

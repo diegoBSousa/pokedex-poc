@@ -87,7 +87,13 @@ class PokemonsFragment : Fragment() {
                         setShimmerVisibility(false)
                         FLIPPER_CHILD_POKEMONS
                     }
-                    is LoadState.Error -> FLIPPER_CHILD_ERROR
+                    is LoadState.Error -> {
+                        setShimmerVisibility(false)
+                        binding.includeViewPokemonsErrorState.buttonRetry.setOnClickListener {
+                            pokemonsAdapter.refresh()
+                        }
+                        FLIPPER_CHILD_ERROR
+                    }
                 }
             }
         }
