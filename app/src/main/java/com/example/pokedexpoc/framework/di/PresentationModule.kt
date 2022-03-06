@@ -1,6 +1,7 @@
 package com.example.pokedexpoc.framework.di
 
 import com.example.pokedexpoc.presentation.ui.home.HomeViewModel
+import com.example.pokedexpoc.presentation.ui.pokemons.PokemonsViewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -14,7 +15,8 @@ object PresentationModule {
     private fun viewModelModule() : Module {
         return module {
             factory {
-                HomeViewModel(get())
+                //HomeViewModel(get())
+                PokemonsViewModel(get())
             }
         }
     }

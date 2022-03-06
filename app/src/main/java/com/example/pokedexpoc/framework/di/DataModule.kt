@@ -33,20 +33,23 @@ object DataModule {
     private fun useCaseModule(): Module {
         return module {
             factory { GetPokemonsUseCase(get()) }
-
+/*
             viewModel {
                 PokemonsViewModel(get())
-            }
+            }*/
         }
     }
     private fun pokemonsModule() : Module {
         return module {
-            single<PokemonRepositoryInterface> {
-                PokemonRepositoryImplementation(get())
+            /*single<PokemonsRemoteDataSourceInterface<PokemonContainerResponse>> {
+                PokemonsRemoteDataSourceImplementation(get())
+            }*/
+            single {
+                PokemonsRemoteDataSourceImplementation(get())
             }
 
-            single<PokemonsRemoteDataSourceInterface<PokemonContainerResponse>> {
-                PokemonsRemoteDataSourceImplementation(get())
+            single<PokemonRepositoryInterface> {
+                PokemonRepositoryImplementation(get())
             }
         }
     }

@@ -1,5 +1,7 @@
 package com.example.pokedexpoc.framework.paging
 
+import android.media.audiofx.DynamicsProcessing
+import android.os.LimitExceededException
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.pokedexpoc.framework.repository.implementations.PokemonsRemoteDataSourceImplementation
@@ -19,16 +21,29 @@ class PokemonsPagingSource(
 
             val response = remoteDataSource.fetchPokemons(queries)
 
-            var responseNext = response.next
-            var responseOffSet = response.next?.takeLast(4)?.filter { it.isDigit() }?.toInt() ?: 0
-            var responsePrevious = response.previous
-            var responseCount = response.results.size
+            //var responseNext = response.next
+            var nextOffSet = response.next?.takeLast(4)?.filter { it.isDigit() }?.toInt() ?: 0
+
+            //var responsePrevious = response.previous
+            var previousOffset = response.previous?.takeLast(4)?.filter { it.isDigit() }?.toInt() ?: 0
+
+            var responseOffSet = nextOffSet - LIMIT
+
+            if(previousOffset == 0) {
+                responseOffSet += LIMIT
+            }
+
+            if(nextOffSet == 0) {
+                responseOffSet = CEIL_LIMIT
+            }
+
+            //var responseCount = response.results.size
             var responseTotal = response.count
 
             LoadResult.Page(
                 data = response.results.map { it.toPokemonModel() },
                 prevKey = null,
-                nextKey = if(responseOffSet <= responseTotal) {
+                nextKey = if(responseOffSet < responseTotal) {
                     responseOffSet
                 } else null
             )
@@ -46,5 +61,6 @@ class PokemonsPagingSource(
 
     companion object {
         private const val LIMIT = 20
+        private const val CEIL_LIMIT = 20
     }
 }

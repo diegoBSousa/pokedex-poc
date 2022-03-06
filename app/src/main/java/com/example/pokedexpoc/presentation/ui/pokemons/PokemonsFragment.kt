@@ -44,8 +44,8 @@ class PokemonsFragment : Fragment() {
         initPokemonsAdapter()
 
         lifecycleScope.launch {
-            viewModel.pokemonsPagingData(query = "").collect { pagingDate->
-                pokemonsAdapter.submitData(pagingDate)
+            viewModel.pokemonsPagingData(query = "").collect { pagingData ->
+                pokemonsAdapter.submitData(pagingData)
             }
         }
         /* *
