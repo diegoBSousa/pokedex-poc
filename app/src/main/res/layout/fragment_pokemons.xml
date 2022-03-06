@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ViewFlipper xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".presentation.ui.pokemons.PokemonsFragment">
+    tools:context=".presentation.ui.pokemons.PokemonsFragment"
+    android:id="@+id/flipper_pokemon">
+
+    <include
+        android:id="@+id/include_view_pokemons_loading_state"
+        layout="@layout/include_view_pokemons_loading_state"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pokemons_recycler"
@@ -14,4 +19,4 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/item_pokemon"/>
 
-</LinearLayout>
+</ViewFlipper>
