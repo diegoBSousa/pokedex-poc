@@ -75,6 +75,7 @@ class PokemonsFragment : Fragment() {
     private fun initPokemonsAdapter() {
         pokemonsAdapter = PokemonsAdapter()
         with(binding.pokemonsRecycler) {
+            scrollToPosition(0)
             setHasFixedSize(true)
             adapter = pokemonsAdapter.withLoadStateFooter(
                 footer = PokemonsLoadStateAdapter(

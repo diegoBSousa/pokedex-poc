@@ -33,9 +33,9 @@ class PokemonsPagingSource(
                 responseOffSet += LIMIT
             }
 
-            if(nextOffSet == 0) {
-                responseOffSet = CEIL_LIMIT * 20
-            }
+            //if(nextOffSet == 0) {
+            //    responseOffSet = CEIL_LIMIT * 20
+            //}
 
             //var responseCount = response.results.size
             var responseTotal = response.count
