@@ -5,10 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import com.example.core.domain.model.Pokemon
 import com.example.pokedexpoc.R
 import com.example.pokedexpoc.databinding.FragmentPokemonsBinding
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -42,6 +45,7 @@ class PokemonsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initPokemonsAdapter()
+        observeInitialLoadState()
 
         lifecycleScope.launch {
             viewModel.pokemonsPagingData(query = "").collect { pagingData ->
@@ -69,6 +73,39 @@ class PokemonsFragment : Fragment() {
             setHasFixedSize(true)
             adapter = pokemonsAdapter
         }
+    }
+
+    private fun observeInitialLoadState() {
+        lifecycleScope.launch {
+            pokemonsAdapter.loadStateFlow.collectLatest { loadState ->
+                binding.flipperPokemon.displayedChild = when(loadState.refresh) {
+                    is LoadState.Loading -> {
+                        setShimmerVisibility(true)
+                        FLIPPER_CHILD_LOADING
+                    }
+                    is LoadState.NotLoading -> {
+                        setShimmerVisibility(false)
+                        FLIPPER_CHILD_POKEMONS
+                    }
+                    is LoadState.Error -> FLIPPER_CHILD_ERROR
+                }
+            }
+        }
+    }
+
+    private fun setShimmerVisibility(visibility: Boolean) {
+        binding.includeViewPokemonsLoadingState.shimmerPokemons.run {
+            isVisible = visibility
+            if(visibility) {
+                startShimmer()
+            } else stopShimmer()
+        }
+    }
+
+    companion object {
+        private const val FLIPPER_CHILD_LOADING = 0
+        private const val FLIPPER_CHILD_POKEMONS = 1
+        private const val FLIPPER_CHILD_ERROR = 2
     }
     /*
     override fun onCreateView(
