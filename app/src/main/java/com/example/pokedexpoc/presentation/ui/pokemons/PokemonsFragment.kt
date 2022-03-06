@@ -76,7 +76,11 @@ class PokemonsFragment : Fragment() {
         pokemonsAdapter = PokemonsAdapter()
         with(binding.pokemonsRecycler) {
             setHasFixedSize(true)
-            adapter = pokemonsAdapter
+            adapter = pokemonsAdapter.withLoadStateFooter(
+                footer = PokemonsLoadStateAdapter(
+                    pokemonsAdapter::retry
+                )
+            )
         }
     }
 

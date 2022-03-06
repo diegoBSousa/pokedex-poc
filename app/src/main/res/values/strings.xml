@@ -14,4 +14,5 @@
     <string name="about_fragment_title">About</string>
     <string name="error_loading_pokemons">Error when trying to load Pokemons</string>
     <string name="common_try_again">Try Again</string>
+    <string name="error_loading_more_try_again">Error when trying to load the next page. Try again</string>
 </resources>
