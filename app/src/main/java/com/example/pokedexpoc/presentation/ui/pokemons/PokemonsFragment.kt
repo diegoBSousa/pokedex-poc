@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.paging.LoadState
 import com.example.core.domain.model.Pokemon
 import com.example.pokedexpoc.R
@@ -25,7 +27,7 @@ class PokemonsFragment : Fragment() {
 
     private val viewModel: PokemonsViewModel by viewModel()
 
-    private val pokemonsAdapter = PokemonsAdapter()
+    private lateinit var pokemonsAdapter: PokemonsAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -48,8 +50,10 @@ class PokemonsFragment : Fragment() {
         observeInitialLoadState()
 
         lifecycleScope.launch {
-            viewModel.pokemonsPagingData(query = "").collect { pagingData ->
-                pokemonsAdapter.submitData(pagingData)
+            viewLifecycleOwner.lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.pokemonsPagingData(query = "").collect { pagingData ->
+                    pokemonsAdapter.submitData(pagingData)
+                }
             }
         }
         /* *
@@ -69,6 +73,7 @@ class PokemonsFragment : Fragment() {
     }
 
     private fun initPokemonsAdapter() {
+        pokemonsAdapter = PokemonsAdapter()
         with(binding.pokemonsRecycler) {
             setHasFixedSize(true)
             adapter = pokemonsAdapter
