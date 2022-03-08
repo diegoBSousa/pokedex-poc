@@ -9,10 +9,13 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.FragmentNavigatorExtras
+import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import com.example.core.domain.model.Pokemon
 import com.example.pokedexpoc.R
 import com.example.pokedexpoc.databinding.FragmentPokemonsBinding
+import com.example.pokedexpoc.presentation.ui.detail.DetailViewArg
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -73,7 +76,19 @@ class PokemonsFragment : Fragment() {
     }
 
     private fun initPokemonsAdapter() {
-        pokemonsAdapter = PokemonsAdapter()
+        pokemonsAdapter = PokemonsAdapter { pokemon, view ->
+            val extras = FragmentNavigatorExtras(
+                view to pokemon.name
+            )
+
+            val directions = PokemonsFragmentDirections
+                .actionPokemonsFragmentToDetailFragment(
+                    pokemon.name,
+                    DetailViewArg(pokemon.name, pokemon.imageUrl)
+                )
+
+            findNavController().navigate(directions, extras)
+        }
         with(binding.pokemonsRecycler) {
             scrollToPosition(0)
             setHasFixedSize(true)

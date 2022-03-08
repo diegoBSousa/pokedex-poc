@@ -10,5 +10,22 @@
         android:id="@+id/pokemonsFragment"
         android:name="com.example.pokedexpoc.presentation.ui.pokemons.PokemonsFragment"
         android:label="@string/pokemon_fragment_title"
-        tools:layout="@layout/fragment_pokemons" />
+        tools:layout="@layout/fragment_pokemons" >
+        <action
+            android:id="@+id/action_pokemonsFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.pokedexpoc.presentation.ui.detail.DetailFragment"
+        android:label="{screenTitle}"
+        tools:layout="@layout/fragment_detail">
+
+        <argument
+            android:name="screenTitle"
+            app:argType="string" />
+        <argument
+            android:name="detailViewArg"
+            app:argType="com.example.pokedexpoc.presentation.ui.detail.DetailViewArg" />
+    </fragment>
 </navigation>
