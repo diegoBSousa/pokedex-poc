@@ -4,6 +4,7 @@ data class PokemonDetailResponse(
     val id: Int,
     val name: String,
     val order: Int,
-    val stats: PokemonDetailStatsResponse,
+    val stats: List<PokemonDetailStatsResponse>,
+    val height: Int,
     val weight: Int
 )

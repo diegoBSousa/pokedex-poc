@@ -7,6 +7,8 @@ import com.example.pokedexpoc.framework.repository.implementations.PokemonsRemot
 import com.example.core.data.repositories.interfaces.PokemonRepositoryInterface
 import com.example.core.data.repositories.interfaces.PokemonsRemoteDataSourceInterface
 import com.example.core.data.services.PokemonService
+import com.example.core.usecase.GetPokemonDetailUseCaseImpl
+import com.example.core.usecase.GetPokemonDetailUserCase
 import com.example.core.usecase.GetPokemonsUseCase
 import com.example.pokedexpoc.presentation.MainViewModel
 import com.example.pokedexpoc.presentation.ui.pokemons.PokemonsViewHolder
@@ -33,6 +35,8 @@ object DataModule {
     private fun useCaseModule(): Module {
         return module {
             factory { GetPokemonsUseCase(get()) }
+
+            factory { GetPokemonDetailUseCaseImpl(get()) }
 /*
             viewModel {
                 PokemonsViewModel(get())
