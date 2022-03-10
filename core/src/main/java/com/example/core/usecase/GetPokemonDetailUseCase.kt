@@ -6,7 +6,7 @@ import com.example.core.usecase.base.ResultStatus
 import com.example.core.usecase.base.UseCase
 import kotlinx.coroutines.flow.Flow
 
-interface GetPokemonDetailUserCase {
+interface GetPokemonDetailUseCase {
 
     operator fun invoke(params: GetPokemonDetailParams): Flow<ResultStatus<PokemonDetail>>
 
@@ -15,10 +15,10 @@ interface GetPokemonDetailUserCase {
 
 class GetPokemonDetailUseCaseImpl(
     private val repository: PokemonRepositoryInterface
-) : GetPokemonDetailUserCase, UseCase<GetPokemonDetailUserCase.GetPokemonDetailParams, PokemonDetail>() {
+) : GetPokemonDetailUseCase, UseCase<GetPokemonDetailUseCase.GetPokemonDetailParams, PokemonDetail>() {
 
     override suspend fun doWork(
-        params: GetPokemonDetailUserCase.GetPokemonDetailParams
+        params: GetPokemonDetailUseCase.GetPokemonDetailParams
     ): ResultStatus<PokemonDetail> {
         val pokemon = repository.getPokemon(params.pokemonId)
         return ResultStatus.Success(pokemon)

@@ -1,23 +1,17 @@
 package com.example.pokedexpoc.framework.di
 
 import android.util.Log
-import com.example.core.data.network.response.PokemonContainerResponse
 import com.example.pokedexpoc.framework.repository.implementations.PokemonRepositoryImplementation
 import com.example.pokedexpoc.framework.repository.implementations.PokemonsRemoteDataSourceImplementation
 import com.example.core.data.repositories.interfaces.PokemonRepositoryInterface
-import com.example.core.data.repositories.interfaces.PokemonsRemoteDataSourceInterface
 import com.example.core.data.services.PokemonService
+import com.example.core.usecase.GetPokemonDetailUseCase
 import com.example.core.usecase.GetPokemonDetailUseCaseImpl
-import com.example.core.usecase.GetPokemonDetailUserCase
 import com.example.core.usecase.GetPokemonsUseCase
-import com.example.pokedexpoc.presentation.MainViewModel
-import com.example.pokedexpoc.presentation.ui.pokemons.PokemonsViewHolder
-import com.example.pokedexpoc.presentation.ui.pokemons.PokemonsViewModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
