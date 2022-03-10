@@ -10,6 +10,7 @@ import com.example.pokedexpoc.R
 import com.example.pokedexpoc.databinding.ItemPokemonBinding
 import com.example.pokedexpoc.util.OnPokemonItemClick
 import com.github.florent37.glidepalette.BitmapPalette.Profile.MUTED_DARK
+import com.github.florent37.glidepalette.BitmapPalette.Profile.MUTED_LIGHT
 import com.github.florent37.glidepalette.BitmapPalette.Profile.VIBRANT
 import com.github.florent37.glidepalette.BitmapPalette.Profile.VIBRANT_LIGHT
 import com.github.florent37.glidepalette.GlidePalette
@@ -34,8 +35,8 @@ class PokemonsViewHolder(
                     .use(MUTED_DARK)
                     .intoBackground(pokemonCard)
 
-                    .use(VIBRANT_LIGHT)
-                    .intoTextColor(pokemonName)
+                    //.use(MUTED_LIGHT)
+                    //.intoTextColor(pokemonName)
             )
             .fallback(R.drawable.ic_baseline_broken_image_24)
             .into(pokemonImage)

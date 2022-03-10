@@ -90,7 +90,7 @@ class PokemonsFragment : Fragment() {
             findNavController().navigate(directions, extras)
         }
         with(binding.pokemonsRecycler) {
-            scrollToPosition(0)
+            //scrollToPosition(0)
             setHasFixedSize(true)
             adapter = pokemonsAdapter.withLoadStateFooter(
                 footer = PokemonsLoadStateAdapter(

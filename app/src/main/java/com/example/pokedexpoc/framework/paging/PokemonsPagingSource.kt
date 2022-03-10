@@ -63,6 +63,5 @@ class PokemonsPagingSource(
 
     companion object {
         private const val LIMIT = 20
-        private const val CEIL_LIMIT = 20
     }
 }
