@@ -1,19 +1,24 @@
 package com.example.pokedexpoc.presentation.ui.pokemons
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.palette.graphics.Palette
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.core.domain.model.Pokemon
 import com.example.pokedexpoc.R
 import com.example.pokedexpoc.databinding.ItemPokemonBinding
 import com.example.pokedexpoc.util.OnPokemonItemClick
+import com.github.florent37.glidepalette.BitmapPalette
+import com.github.florent37.glidepalette.BitmapPalette.Profile.MUTED
 import com.github.florent37.glidepalette.BitmapPalette.Profile.MUTED_DARK
 import com.github.florent37.glidepalette.BitmapPalette.Profile.MUTED_LIGHT
 import com.github.florent37.glidepalette.BitmapPalette.Profile.VIBRANT
 import com.github.florent37.glidepalette.BitmapPalette.Profile.VIBRANT_LIGHT
 import com.github.florent37.glidepalette.GlidePalette
+import com.google.android.material.shape.CornerFamily
 
 class PokemonsViewHolder(
     itemPokemonBinding: ItemPokemonBinding,
@@ -35,8 +40,8 @@ class PokemonsViewHolder(
                     .use(MUTED_DARK)
                     .intoBackground(pokemonCard)
 
-                    //.use(MUTED_LIGHT)
-                    //.intoTextColor(pokemonName)
+                    .use(MUTED)
+                    .intoTextColor(pokemonName)
             )
             .fallback(R.drawable.ic_baseline_broken_image_24)
             .into(pokemonImage)

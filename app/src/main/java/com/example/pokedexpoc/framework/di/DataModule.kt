@@ -23,25 +23,11 @@ object DataModule {
     private const val OK_HTTP = "Ok Http"
 
     fun load() {
-        loadKoinModules(pokemonsModule() + networkModule() + useCaseModule())
+        loadKoinModules(pokemonsModule() + networkModule())
     }
 
-    private fun useCaseModule(): Module {
-        return module {
-            factory { GetPokemonsUseCase(get()) }
-
-            factory { GetPokemonDetailUseCaseImpl(get()) }
-/*
-            viewModel {
-                PokemonsViewModel(get())
-            }*/
-        }
-    }
     private fun pokemonsModule() : Module {
         return module {
-            /*single<PokemonsRemoteDataSourceInterface<PokemonContainerResponse>> {
-                PokemonsRemoteDataSourceImplementation(get())
-            }*/
             single {
                 PokemonsRemoteDataSourceImplementation(get())
             }

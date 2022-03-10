@@ -84,7 +84,7 @@ class PokemonsFragment : Fragment() {
             val directions = PokemonsFragmentDirections
                 .actionPokemonsFragmentToDetailFragment(
                     pokemon.name,
-                    DetailViewArg(pokemon.name, pokemon.imageUrl)
+                    DetailViewArg(pokemon.id, pokemon.name, pokemon.imageUrl)
                 )
 
             findNavController().navigate(directions, extras)

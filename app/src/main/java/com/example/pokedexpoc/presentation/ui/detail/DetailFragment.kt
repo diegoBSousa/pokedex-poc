@@ -2,6 +2,7 @@ package com.example.pokedexpoc.presentation.ui.detail
 
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,7 @@ import androidx.transition.TransitionInflater
 import com.bumptech.glide.Glide
 import com.example.pokedexpoc.R
 import com.example.pokedexpoc.databinding.FragmentDetailBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailFragment : Fragment() {
 
@@ -18,6 +20,7 @@ class DetailFragment : Fragment() {
     private val binding: FragmentDetailBinding get() = _binding!!
 
     private val args by navArgs<DetailFragmentArgs>()
+    private val viewModel: DetailViewModel by viewModel()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,6 +51,21 @@ class DetailFragment : Fragment() {
         }
 
         setSharedElementTransitionOnEnter()
+
+        /**
+         * Testing ViewModel
+         */
+        viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
+            val logResult = when(uiState) {
+                DetailViewModel.UiState.Loading -> "Loading Pokemon Details..."
+                is DetailViewModel.UiState.Success -> uiState.pokemonDetail.toString()
+                DetailViewModel.UiState.Error -> "Error Gettin Pokemon Detais"
+            }
+
+            Log.d(DetailFragment::class.simpleName, logResult)
+        }
+
+        viewModel.getPokemon(detailViewArg.id)
     }
 
     // Defines animation as 'move'

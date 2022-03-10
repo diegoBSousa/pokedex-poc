@@ -25,7 +25,7 @@ class DetailViewModel(
 
     private fun Flow<ResultStatus<PokemonDetail>>.watchStatus() = viewModelScope.launch {
         collect { status ->
-            when (status) {
+            _uiState.value = when (status) {
                 ResultStatus.Loading -> UiState.Loading
                 is ResultStatus.Success -> UiState.Success(status.data)
                 is ResultStatus.Error -> UiState.Error
